@@ -6,3 +6,7 @@ SET(SOURCES
 SET(HEADERS
     # Add header files here
 )
+
+SET(ASSEMBLY_SOURCES
+    # Add assembly files here
+)

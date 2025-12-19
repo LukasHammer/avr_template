@@ -16,5 +16,17 @@ set(CMAKE_RANLIB     ${AVR_PREFIX}ranlib)
 set(CMAKE_OBJCOPY    ${AVR_PREFIX}objcopy)
 set(SIZE             ${AVR_PREFIX}size)
 
-set(CMAKE_C_FLAGS_INIT "-mmcu=${AVR_MCU} -DF_CPU=${F_CPU} -Os -ffunction-sections -fdata-sections -Wall -Wextra")
-set(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,--gc-sections")
+add_compile_options(
+    -mmcu=${AVR_MCU}
+    -DF_CPU=${F_CPU}
+    -Os
+    -ffunction-sections
+    -fdata-sections
+    -Wall
+    -Wextra
+)
+
+add_link_options(
+    -mmcu=${AVR_MCU}
+    -Wl,--gc-sections
+)
