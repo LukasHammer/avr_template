@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# ============================================
+#  AVR Development Environment Installer
+# ============================================
+
+# --- helper -------------------------------------------------------
+
+require_command() {
+    if ! command -v "$1" &>/dev/null; then
+        echo "Error: '$1' is required but not installed." >&2
+        exit 1
+    fi
+}
+
+# Check for basic required tools
+require_command sudo
+require_command apt-get
+
+# --------------------------------------------
+echo "Updating package lists..."
+sudo apt-get update -y
+
+# --------------------------------------------
+# Packages grouped for readability
+AVR_PACKAGES=(
+    gcc-avr
+    binutils-avr
+    avr-libc
+    avrdude
+    gdb-avr
+    avr-objcopy
+)
+
+BUILD_TOOLS=(
+    build-essential
+    make
+    cmake
+    ccache
+    ninja-build
+    pkgconf
+)
+
+ANALYSIS_TOOLS=(
+    clang
+    clang-format
+    clang-tidy
+    cppcheck
+)
+
+UTILITIES=(
+    bash-completion
+    usbutils
+    picocom
+    srecord
+    dfu-programmer
+    dfu-util
+)
+
+ALL_PACKAGES=(
+    "${AVR_PACKAGES[@]}"
+    "${BUILD_TOOLS[@]}"
+    "${ANALYSIS_TOOLS[@]}"
+    "${UTILITIES[@]}"
+)
+
+# --------------------------------------------
+echo "Installing AVR development dependencies..."
+sudo apt-get install -y "${ALL_PACKAGES[@]}"
+
+# --------------------------------------------
+echo
+echo "============================================"
+echo " AVR project dependencies installed successfully!"
+echo "============================================"

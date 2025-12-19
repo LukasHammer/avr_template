@@ -1,0 +1,43 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20
+  },
+  "configurePresets": [
+    {
+      "name": "avr-release",
+      "displayName": "AVR (Release)",
+      "generator": "Ninja",
+      "binaryDir": "build/avr-release",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/avr-gcc.cmake",
+        "CMAKE_BUILD_TYPE": "Release",
+        "AVR_MCU": "atmega16",
+        "F_CPU": "12000000UL"
+      }
+    },
+    {
+      "name": "avr-debug",
+      "displayName": "AVR (Debug)",
+      "generator": "Ninja",
+      "binaryDir": "build/avr-debug",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/avr-gcc.cmake",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "AVR_MCU": "atmega16",
+        "F_CPU": "12000000UL"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "avr-release",
+      "configurePreset": "avr-release"
+    },
+    {
+      "name": "avr-debug",
+      "configurePreset": "avr-debug"
+    }
+  ]
+}

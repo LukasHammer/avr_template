@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Flash AVR via bootloadHID",
+            "type": "shell",
+            "command": "bootloadHID -r ${command:cmake.launchTargetPath}.hex",
+            "problemMatcher": [],
+        },
+        {
+            "label": "Flash AVR via avrdude",
+            "type": "shell",
+            "command": "avrdude -c usbasp -p m328p -U flash:w:${command:cmake.launchTargetPath}.hex",
+            "problemMatcher": [],
+        }
+    ]
+}
