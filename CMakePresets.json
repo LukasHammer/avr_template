@@ -13,6 +13,8 @@
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/avr-gcc.cmake",
         "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_FLAGS_RELEASE": "-Os -flto -fdata-sections -ffunction-sections -DNDEBUG -Wall -Wextra",
+        "CMAKE_EXE_LINKER_FLAGS_RELEASE": "-flto -Wl,--gc-sections",
         "AVR_MCU": "atmega16",
         "F_CPU": "12000000UL"
       }
@@ -25,6 +27,8 @@
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/avr-gcc.cmake",
         "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_FLAGS_DEBUG": "-Og -g3 -fno-inline -fno-omit-frame-pointer -Wall -Wextra",
+        "CMAKE_EXE_LINKER_FLAGS_DEBUG": "",
         "AVR_MCU": "atmega16",
         "F_CPU": "12000000UL"
       }

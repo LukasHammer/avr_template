@@ -19,14 +19,8 @@ set(SIZE             ${AVR_PREFIX}size)
 add_compile_options(
     -mmcu=${AVR_MCU}
     -DF_CPU=${F_CPU}
-    -Os
-    -ffunction-sections
-    -fdata-sections
-    -Wall
-    -Wextra
 )
 
 add_link_options(
     -mmcu=${AVR_MCU}
-    -Wl,--gc-sections
 )
